@@ -1,0 +1,10 @@
+; top-most EditorConfig file
+root = true
+
+; Unix-style newlines
+[*]
+end_of_line = CRLF
+
+; Tab indentation (no size specified)
+[*.js]
+indent_style = tab

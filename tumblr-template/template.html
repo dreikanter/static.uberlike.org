@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="http://static.uberlike.org/css/reset.css" rel="stylesheet" type="text/css">
+<link href="http://static.uberlike.org/css/llike.css" rel="stylesheet" type="text/css">
+<title>{Title}{block:PostSummary}: {PostSummary}{/block:PostSummary}</title>
+<link rel="alternate" type="application/rss+xml" title="{Title} RSS feed" href="http://feeds.feedburner.com/llike">
+{block:Description}<meta name="description" content="{MetaDescription}" />
+{/block:Description}<link rel="shortcut icon" href="{Favicon}">
+
+<script type="text/javascript" src="http://yandex.st/jquery/1.6.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.uberlike.org/js/jquery.lazyload.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($){
+    var bgwidth = 1000;
+	var offset = 0;
+	function scrollbackground() {
+		offset = (offset < 1) ? offset + (bgwidth - 1) : offset - 1;
+		$('a').css("background-position", offset + "px 0");
+		setTimeout(function() { scrollbackground(); }, 80 );
+	}
+	scrollbackground();
+
+	var soloPripev = "И буду я искать повсюду тебя, морковь моя. Соло. Припев."
+	$("#search").val(soloPripev).css("color", "silver");
+	$("#search").focus(function() { $(this).val("").css("color", "black"); });
+	$("#search").blur(function() { $(this).val(soloPripev).css("color", "silver"); });
+
+
+	if (navigator.platform == "iPad") return;
+	jQuery("img").lazyload({
+		effect:"fadeIn"
+	});
+});
+</script>
+
+<!--script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load("jquery", "1.4.1");
+google.setOnLoadCallback(function() {
+	var bgwidth = 1000;
+	var offset = 0;
+	function scrollbackground() {
+		offset = (offset < 1) ? offset + (bgwidth - 1) : offset - 1;
+		$('a').css("background-position", offset + "px 0");
+		setTimeout(function() { scrollbackground(); }, 80 );
+	}
+	scrollbackground();
+
+	var soloPripev = "И буду я искать повсюду тебя, морковь моя. Соло. Припев."
+	$("#search").val(soloPripev).css("color", "silver");
+	$("#search").focus(function() { $(this).val("").css("color", "black"); });
+	$("#search").blur(function() { $(this).val(soloPripev).css("color", "silver"); });
+});
+</script-->
+</head>
+
+<body>
+<div id="layout">
+	<div id="header">
+		<h1><a href="/">{Title}</a><span class="silver">{block:Description} //&nbsp;{Description}{/block:Description}</h1>
+		{block:DayPage}<h2>Посты за <span class="hl">{DayOfMonth}.{MonthNumberWithZero}.{Year}</span></h2>{/block:DayPage}
+		{block:TagPage}<h2>Посты с тегом <em class="hl">{Tag}</em></h2>{/block:TagPage}
+		{block:SearchPage}<h2>Результаты поиска <span class="silver">({SearchResultCount})</span> <a href="/search?q={URLSafeSearchQuery}">#</a>{/block:SearchPage}</span></h2>
+	</div>
+
+	<div id="body">{block:NoSearchResults}Ну и запросы у вас{/block:NoSearchResults}{block:Posts}
+		<div class="entity">
+			<div class="glamour">
+			<p><a href="{Permalink}">{DayOfMonth}.{MonthNumberWithZero}.{Year}</a><br>
+			{block:HasTags}<ul class="tags">
+				{block:Tags}<li><a href="{TagURL}"><span class="hash">#</span>{Tag}</a></li>{/block:Tags}
+			</ul>{/block:HasTags}
+			{block:NoteCount}<p>:) × {NoteCount}</p>{/block:NoteCount}</div>
+			<div class="discourse">
+
+			{block:Text}
+				{block:Title}<h2>{Title}</h2>{/block:Title}
+				{Body}
+				{block:More}<p><a href="{Permalink}">Читать дальше...</a></p>{/block:More}
+			{/block:Text}
+
+			{block:Quote}
+				<blockquote class="{Length}">{Quote}</blockquote>
+				{block:Source}<p class="source">— {Source}</p>{/block:Source}
+			{/block:Quote}
+
+			{block:Photo}
+				{block:Caption}{Caption}{/block:Caption}
+				<div class="media">{LinkOpenTag}<img src="{PhotoUrl-500}" alt="{PhotoAlt}" />{LinkCloseTag}{block:HighRes}<a href="{PhotoURL-HighRes}"><img width="16" height="16" src="http://static.uberlike.org/img/zoom_in.png" alt="zoom" class="zoom"></a>{/block:HighRes}</div>
+			{/block:Photo}
+
+			{block:Chat}
+				{block:Title}<h2>{Title}</h2>{/block:Title}
+				<ul class="chat">{block:Lines}
+					<li class="user_{UserNumber} {Alt}">{block:Label}<em>{Label}</em>{/block:Label} {Line}</li>
+				{/block:Lines}</ul>
+			{/block:Chat}
+
+			{block:Link}
+				<h2 class="link"><a {Target} href="{URL}">{Name}</a> [...]</h2>
+				{block:Description}{Description}{/block:Description}
+			{/block:Link}
+
+			{block:Video}
+				{block:Caption}{Caption}{/block:Caption}
+				<div class="media">{Video-500}</div>
+			{/block:Video}
+
+			{block:Audio}
+			{block:Caption}{Caption}{/block:Caption}
+			{block:AlbumArt}<div class="media"><img src="{AlbumArtURL}" alt="{Artist}{Album}"></div>{/block:AlbumArt}
+			<div class="media">{AudioPlayerGrey}</div>
+				<p class="songinfo">
+					{block:Artist}Исполнитель: {Artist}<br>{/block:Artist}
+					{block:Album}Альбом: {Album}<br>{/block:Album}
+					{block:TrackName}Трек: {TrackName}<br>{/block:TrackName}
+					Количество прослушиваний: {FormattedPlayCount}<br>
+					{block:ExternalAudio}<a href="{ExternalAudioURL}">Скачать</a>{/block:ExternalAudio}</p>
+			{/block:Audio}
+			{block:PostNotes}<div class="clear"></div>{PostNotes}{/block:PostNotes}
+			{block:ContentSource}<div class="clear"></div>
+			        {lang:Source}:
+			        {block:SourceLogo}
+			            <a href="{SourceURL}"><img src="{BlackLogoURL}" width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" /></a>
+			        {/block:SourceLogo}
+			        {block:NoSourceLogo}
+			            <a href="{SourceURL}">{SourceLink}</a>
+			        {/block:NoSourceLogo}
+			{/block:ContentSource}
+			</div>
+			<div class="clear"></div>
+		</div>
+	{/block:Posts}</div>
+
+	<div id="paginator">
+		<div class="glamour">{block:Pagination}Куда?{/block:Pagination}</div>
+		<div class="discourse">
+		{block:Pagination}
+			{block:NextPage}<a href="{NextPage}" class="left">&larr;&nbsp;<span>Туда</span></a>{/block:NextPage}
+			<span class="page">Стр.&nbsp;{CurrentPage}&nbsp;из&nbsp;{TotalPages}</span>
+			{block:PreviousPage}<a href="{PreviousPage}" class="right"><span>Сюда</span>&nbsp;&rarr;</a>{/block:PreviousPage}
+		{/block:Pagination}{block:PermalinkPagination}
+			{block:PreviousPost}<a href="{PreviousPost}" class="left">&larr;&nbsp;<span>Туда</span></a>{/block:PreviousPost}
+			<span class="page">...</span>
+			{block:NextPost}<a href="{NextPost}" class="right"><span>Сюда</span>&nbsp;&rarr;</a>{/block:NextPost}
+		{/block:PermalinkPagination}{block:DayPagination}
+			{block:NextDayPage}<a href="{NextDayPage}" class="left">&larr;&nbsp;<span>{DayOfMonth}&nbsp;{ShortMonth}</span></a>{/block:NextDayPage}
+			<span class="page">...</span>
+			{block:PreviousDayPage}<a href="{PreviousDayPage}" class="right"><span>{DayOfMonth}&nbsp;{ShortMonth}</span>&nbsp;&rarr;</a>{/block:PreviousDayPage}
+		{/block:DayPagination}
+		</div>
+		<div class="clear"></div>
+	</div>
+
+	<div id="footer">
+		<div class="glamour">А как это?</div>
+		<div class="discourse etc">
+			<p>uberlike.org придуман роботами, нарисован фломастерами и запущен на <a href="http://tumblr.com/">тмублере</a> примерно в 2009 году. Спонсор гипноссылок&nbsp;— <a href="http://colorlovers.com/">colorlovers.com</a>. Не забудьте <a href="{RSS}">покормить агрегатор</a>.</p>
+			<p><a href="http://musayev.com/">Присылайте</a> буквы. Спасибо.</p>
+		    <p><form action="/search" method="get"><input type="text" name="q" value="{SearchQuery}" id="search"></form></p>
+		    <p class="menu"><a href="/">В начало</a> | <a href="/archive">Архив</a>{block:AskEnabled}| <a href="/ask">Задать вопрос</a>{/block:AskEnabled}</p>
+		</div>
+		<div class="counter"><a href="http://feeds.feedburner.com/llike"><img src="http://feeds.feedburner.com/~fc/llike?bg=FF9900&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></div>
+		<div class="clear"></div>
+	</div>
+
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-295171-7");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

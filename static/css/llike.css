@@ -1,0 +1,375 @@
+body
+{
+	color:black;
+	background-color:white;
+	font-family:Georgia,"Times New Roman",serif;
+	line-height:1.5;
+}
+h1,h2,h3,h4,h5,h6
+{
+	font-weight:normal;
+	line-height:1.2;
+}
+p,td,th,blockquote,ul,ol
+{
+	line-height:1.4;
+	margin-bottom:.6em;
+}
+li
+{
+	line-height:1.4;
+	margin-bottom:0em;
+}
+h1
+{
+	font-size:1.56em;
+}
+h2
+{
+	font-size:1.8em;
+}
+h3
+{
+	font-size:1.6em;
+	margin:1em 0;
+}
+h1 a,h2 a,h3 a
+{
+	text-decoration:none;
+}
+img
+{
+	border-width:0;
+}
+ul,ol
+{
+	padding-left:2em;
+	list-style-type:disc;
+}
+a
+{
+	color:#336699;
+}
+a:visited
+{
+	color:#333366;
+}
+a:active
+{
+	color:red;
+}
+a:hover
+{
+	color:black;
+	background-color:#ffffee;
+	background-image:url('http://static.uberlike.org/img/stripes5.png');
+}
+a:focus
+{
+	text-decoration:underline;
+}
+
+/* layout */
+div#layout
+{
+	width:790px;
+	margin:0 auto;
+	padding:0;
+}
+div#header
+{
+	padding:4em 1em 2.8em 150px;
+}
+#body,
+div#paginator,
+div#footer
+{
+	margin-bottom:2.8em;
+}
+div#footer
+{
+
+}
+
+/* header */
+div#header h1
+{
+	margin-left:6.3em;
+	text-indent:-6.3em;
+	font-style:italic;
+}
+div#header h1 a
+{
+	color:black;
+}
+div#header h1 span
+{
+	font-style:normal;
+}
+div#header h2
+{
+	margin-top:.5em;
+	font-size:1em;
+}
+/* body */
+div.entity
+{
+	margin-bottom:50px;
+}
+div.glamour, div.discourse
+{
+	float:left;
+	border-width:0 10px;
+	border-style:solid;
+	border-color:transparent;
+}
+div.glamour
+{
+	width:120px;
+	padding-top:.6em;
+	font-size:75%;
+	font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
+	line-height:140%;
+}
+div.discourse
+{
+	width:630px;
+	font-size:100%;
+}
+div.discourse > h2
+{
+	margin-top:-.21em;
+}
+div.discourse > p
+{
+	margin-top:.23em;
+}
+div.discourse > blockquote
+{
+	margin-top:-.13em;
+}
+div.glamour,
+div.glamour a,
+div.glamour a:visited,
+ul.tags li
+{
+	color:gray;
+	background-color:transparent;
+	text-decoration:none;
+}
+div.glamour a:hover
+{
+	color:black;
+	background-color:#ffffee;
+}
+div.glamour a:focus
+{
+	text-decoration:underline;
+}
+div.discourse big
+{
+	padding:0 .1em;
+	font-size:140%;
+	background-color:#ffffcc;
+}
+div.media
+{
+	margin-bottom:.6em;
+}
+div.media img
+{
+	float:left;
+}
+img.zoom
+{
+	margin-left:.5em;
+}
+ul.tags
+{
+	padding:0;
+	list-style-type:none;
+}
+ul.chat
+{
+	padding-left:0;
+	list-style-type:none;
+}
+ul.chat em
+{
+	color:gray;
+}
+div.discourse > blockquote
+{
+	margin-bottom:0;
+	font-style:italic;
+	font-size:1.4em;
+}
+p.source
+{
+	padding:0 1em 0 4em;
+	margin-top:.4em;
+	text-indent:-1.15em;
+}
+
+ol.notes {
+	padding: 0px;
+	margin: 25px 0px;
+	clear:both;
+	list-style-type: none;
+	border-bottom: solid 1px #eeeeee;
+	font-size:.8em;
+}
+ol.notes li.note {
+	border-top: solid 1px #eeeeee;
+	padding: 10px;
+}
+ol.notes li.note img.avatar {
+	vertical-align: -4px;
+	margin-right: 10px;
+	width: 16px;
+	height: 16px;
+}
+ol.notes li.note span.action {
+
+}
+ol.notes li.note .answer_content {
+	font-weight: normal;
+}
+ol.notes li.note blockquote {
+	border-color: #eee;
+	padding: 4px 10px;
+	margin: 10px 0px 0px 25px;
+}
+ol.notes li.note blockquote a {
+	text-decoration: none;
+}
+ol.notes, ol.notes li, ol.notes a, ol.notes a:visited, ol.notes blockquote,
+p.menu, p.menu a, p.menu a:visited
+{
+	color:gray;
+	background-color:transparent;
+}
+ol.notes a:hover
+{
+	color:black;
+}
+p.menu
+{
+	margin-top:1.5em;
+	clear:both;
+}
+
+/* paginator */
+div#paginator div.discourse
+{
+	width:500px;
+	text-align:center;
+}
+div#paginator .left,
+div#paginator .right,
+div#paginator .page
+{
+	padding:0 .5em;
+}
+div#paginator .left
+{
+	float:left;
+	text-align:left;
+}
+div#paginator .right
+{
+	float:right;
+	text-align:right;
+}
+div#paginator .page
+{
+	width:300px;
+}
+div#paginator a
+{
+	text-decoration:none;
+}
+div#paginator a span
+{
+	text-decoration:underline;
+}
+
+/* footer */
+div.counter
+{
+	text-align:right;
+	padding:.5em 1em;
+}
+div.etc
+{
+	width:450px;
+	font-size:.8em;
+}
+div.etc,
+div.etc a,
+div.etc a:visited
+{
+	color:gray;
+}
+div.etc a:hover
+{
+	color:black;
+}
+div#footer form
+{
+	margin-top:2em;
+}
+input#search
+{
+	width:32em;
+	margin-bottom:1.2em;
+	border:1px solid gray;
+	color:silver;
+}
+
+/* commons */
+.silver, .hash
+{
+	color:silver;
+	background-color:transparent;
+}
+.hl
+{
+	color:black;
+	background-color:#ffffcc;
+}
+
+/* hacks */
+.clear
+{
+	clear:both;
+	display:block;
+	overflow:hidden;
+	visibility:hidden;
+	width: 0;
+	height: 0;
+}
+.clearfix:after
+{
+	clear:both;
+	content:' ';
+	display:block;
+	font-size:0;
+	line-height:0;
+	visibility:hidden;
+	width:0;
+	height:0;
+}
+
+/* disqus */
+a.dsq-brlink
+{
+	height:0;
+	visibility:hidden;
+}
+div.dsq-options
+{
+	height:0;
+	visibility:hidden;
+	margin-bottom:4em;
+}
